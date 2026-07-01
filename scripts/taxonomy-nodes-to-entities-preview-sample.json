@@ -1,0 +1,33 @@
+{
+  "description": "Preview of entity rows built from taxonomy_nodes. key = meaningful slug (taxonomy:level:code_or_slug).",
+  "entities_table_columns_used": ["entity_type", "key", "name"],
+  "total_rows": 272,
+  "sample_rows": [
+    { "entity_type": "taxonomy_node", "key": "gics:sector:10", "name": "GICS – sector: Energy" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:15", "name": "GICS – sector: Materials" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:20", "name": "GICS – sector: Industrials" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:25", "name": "GICS – sector: Consumer Discretionary" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:30", "name": "GICS – sector: Consumer Staples" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:35", "name": "GICS – sector: Health Care" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:40", "name": "GICS – sector: Financials" },
+    { "entity_type": "taxonomy_node", "key": "gics:sector:45", "name": "GICS – sector: Information Technology" },
+    { "entity_type": "taxonomy_node", "key": "gics:industry_group:1010", "name": "GICS – industry group: Energy" },
+    { "entity_type": "taxonomy_node", "key": "gics:industry_group:1510", "name": "GICS – industry group: Materials" },
+    { "entity_type": "taxonomy_node", "key": "gics:industry:10101010", "name": "GICS – industry: Oil & Gas Drilling" },
+    { "entity_type": "taxonomy_node", "key": "gics:sub_industry:45102030", "name": "GICS – sub-industry: Internet Services & Infrastructure" },
+    { "entity_type": "taxonomy_node", "key": "gics:sub_industry:45103010", "name": "GICS – sub-industry: Application Software" }
+  ],
+  "count_by_level": {
+    "sector": 12,
+    "industry_group": 24,
+    "industry": 69,
+    "sub_industry": 167
+  },
+  "key_logic": {
+    "format": "taxonomy_slug:level:code_or_slug",
+    "taxonomy_slug": "Lowercase slug of taxonomy name (e.g. gics).",
+    "level": "sector | industry_group | industry | sub_industry",
+    "code_or_slug": "Node code when present (e.g. 10, 10101010); otherwise slugified node title (e.g. internet_services_infrastructure).",
+    "collision": "If key already used, append _ and first 8 chars of node_id."
+  }
+}

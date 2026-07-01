@@ -1,0 +1,17 @@
+[
+  {"sic_code":100,"office":"Industrial Applications and Services","industry_title":"AGRICULTURAL PRODUCTION-CROPS"},
+  {"sic_code":200,"office":"Industrial Applications and Services","industry_title":"AGRICULTURAL PROD-LIVESTOCK & ANIMAL SPECIALTIES"},
+  {"sic_code":700,"office":"Industrial Applications and Services","industry_title":"AGRICULTURAL SERVICES"},
+  {"sic_code":800,"office":"Industrial Applications and Services","industry_title":"FORESTRY"},
+  {"sic_code":900,"office":"Industrial Applications and Services","industry_title":"FISHING, HUNTING AND TRAPPING"},
+  {"sic_code":1000,"office":"Office of Energy & Transportation","industry_title":"METAL MINING"},
+  {"sic_code":1040,"office":"Office of Energy & Transportation","industry_title":"GOLD AND SILVER ORES"},
+  {"sic_code":1090,"office":"Office of Energy & Transportation","industry_title":"MISCELLANEOUS METAL ORES"},
+  {"sic_code":1220,"office":"Office of Energy & Transportation","industry_title":"BITUMINOUS COAL & LIGNITE MINING"},
+  {"sic_code":1221,"office":"Office of Energy & Transportation","industry_title":"BITUMINOUS COAL & LIGNITE SURFACE MINING"},
+  {"sic_code":1311,"office":"Office of Energy & Transportation","industry_title":"CRUDE PETROLEUM & NATURAL GAS"},
+  {"sic_code":1381,"office":"Office of Energy & Transportation","industry_title":"DRILLING OIL & GAS WELLS"},
+  {"sic_code":1382,"office":"Office of Energy & Transportation","industry_title":"OIL & GAS FIELD EXPLORATION SERVICES"},
+  {"sic_code":1389,"office":"Office of Energy & Transportation","industry_title":"OIL & GAS FIELD SERVICES, NEC"},
+  {"sic_code":1400,"office":"Office of Energy & Transportation","industry_title":"MINING & QUARRYING OF NONMETALLIC MINERALS (NO FUELS)"}
+]

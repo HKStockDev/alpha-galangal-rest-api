@@ -13,7 +13,7 @@ export type WoopSocialPlatform =
   | 'YOUTUBE'
   | 'WOOPTEST';
 
-const PRECISION_TO_WOOP: Record<SocialOauthPlatform, WoopSocialPlatform> = {
+const CONVICTION_TO_WOOP: Record<SocialOauthPlatform, WoopSocialPlatform> = {
   linkedin: 'LINKEDIN',
   facebook: 'FACEBOOK',
   instagram: 'INSTAGRAM',
@@ -21,18 +21,18 @@ const PRECISION_TO_WOOP: Record<SocialOauthPlatform, WoopSocialPlatform> = {
   tiktok: 'TIKTOK',
 };
 
-export function precisionPlatformToWoop(platform: SocialOauthPlatform): WoopSocialPlatform {
-  return PRECISION_TO_WOOP[platform];
+export function convictionPlatformToWoop(platform: SocialOauthPlatform): WoopSocialPlatform {
+  return CONVICTION_TO_WOOP[platform];
 }
 
-/** Normalize Woop platform to Precision UI platform slug. */
-export function woopPlatformToPrecision(raw: string): string {
+/** Normalize Woop platform to Conviction UI platform slug. */
+export function woopPlatformToConviction(raw: string): string {
   const upper = raw.toUpperCase();
   if (upper === 'LINKEDIN_PAGES') return 'linkedin';
   if (upper === 'X') return 'x';
   return upper.toLowerCase();
 }
 
-export function woopStatusToPrecision(status: string): 'active' | 'disconnected' {
+export function woopStatusToConviction(status: string): 'active' | 'disconnected' {
   return status.toUpperCase() === 'CONNECTED' ? 'active' : 'disconnected';
 }

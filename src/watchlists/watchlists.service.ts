@@ -25,7 +25,7 @@ type MultiFormulaScreenerRow = {
   name: string;
   fundamental_constriction_score: number | null;
   net_exposure_score: number | null;
-  insider_precision_score: number | null;
+  insider_conviction_score: number | null;
   political_score: number | null;
   america_first_score: number | null;
 };
@@ -43,7 +43,7 @@ type MultiFormulaScreenerListResult = {
 const MULTI_FORMULA_KEY_BY_COLUMN: Record<Exclude<MultiFormulaSortColumn, 'ticker'>, string> = {
   fundamental_constriction_score: 'fundamental_constriction_score',
   net_exposure_score: 'net_exposure_score',
-  insider_precision_score: 'insider_precision_score',
+  insider_conviction_score: 'insider_conviction_score',
   political_score: 'political_score',
   america_first_score: 'america_first_score',
 };
@@ -177,7 +177,7 @@ export class WatchlistsService {
         name: s.name,
         fundamental_constriction_score: null,
         net_exposure_score: null,
-        insider_precision_score: null,
+        insider_conviction_score: null,
         political_score: null,
         america_first_score: null,
       }));
@@ -206,8 +206,8 @@ export class WatchlistsService {
         curr.fundamental_constriction_score = row.score;
       } else if (formulaKey === 'net_exposure_score') {
         curr.net_exposure_score = row.score;
-      } else if (formulaKey === 'insider_precision_score') {
-        curr.insider_precision_score = row.score;
+      } else if (formulaKey === 'insider_conviction_score') {
+        curr.insider_conviction_score = row.score;
       } else if (formulaKey === 'political_score') {
         curr.political_score = row.score;
       } else if (formulaKey === 'america_first_score') {
@@ -224,7 +224,7 @@ export class WatchlistsService {
         name: s.name,
         fundamental_constriction_score: e?.fundamental_constriction_score ?? null,
         net_exposure_score: e?.net_exposure_score ?? null,
-        insider_precision_score: e?.insider_precision_score ?? null,
+        insider_conviction_score: e?.insider_conviction_score ?? null,
         political_score: e?.political_score ?? null,
         america_first_score: e?.america_first_score ?? null,
       };
@@ -244,9 +244,9 @@ export class WatchlistsService {
     );
     rows = this.applyMinMaxFilter(
       rows,
-      'insider_precision_score',
-      query.min_insider_precision_score,
-      query.max_insider_precision_score,
+      'insider_conviction_score',
+      query.min_insider_conviction_score,
+      query.max_insider_conviction_score,
     );
     rows = this.applyMinMaxFilter(
       rows,
@@ -741,7 +741,7 @@ export class WatchlistsService {
       'name',
       'fundamental_constriction_score',
       'net_exposure_score',
-      'insider_precision_score',
+      'insider_conviction_score',
       'political_score',
       'america_first_score',
     ];
@@ -754,7 +754,7 @@ export class WatchlistsService {
           ? ''
           : String(item.fundamental_constriction_score),
         item.net_exposure_score == null ? '' : String(item.net_exposure_score),
-        item.insider_precision_score == null ? '' : String(item.insider_precision_score),
+        item.insider_conviction_score == null ? '' : String(item.insider_conviction_score),
         item.political_score == null ? '' : String(item.political_score),
         item.america_first_score == null ? '' : String(item.america_first_score),
       ]),

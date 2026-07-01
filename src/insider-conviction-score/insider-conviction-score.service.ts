@@ -2,14 +2,14 @@ import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import {
-  DEFAULT_INSIDER_PRECISION_FORMULA_PARAMS,
-  mergeInsiderPrecisionParams,
-  type InsiderPrecisionFormulaParams,
+  DEFAULT_INSIDER_CONVICTION_FORMULA_PARAMS,
+  mergeInsiderConvictionParams,
+  type InsiderConvictionFormulaParams,
 } from '../formulas/formulas.service';
 
 const MODEL_VERSION = 'v1';
 const PERIOD_KEY = 'snapshot';
-const FORMULA_KEY = 'insider_precision_score';
+const FORMULA_KEY = 'insider_conviction_score';
 
 const SEC_CODE_TO_NORMALIZED: Record<string, string> = {
   P: 'buy',
@@ -30,7 +30,7 @@ const SEC_CODE_TO_NORMALIZED: Record<string, string> = {
 const ROLE_TO_PARAM_KEY: Record<
   string,
   keyof Omit<
-    InsiderPrecisionFormulaParams,
+    InsiderConvictionFormulaParams,
     | 'recency_weight_0_30_days'
     | 'recency_weight_31_60_days'
     | 'recency_weight_61_90_days'
@@ -57,7 +57,7 @@ const ROLE_TO_PARAM_KEY: Record<
   PRESIDENT: 'role_weight_president',
 };
 
-export interface InsiderPrecisionCalculateResult {
+export interface InsiderConvictionCalculateResult {
   tickersRequested: number;
   tickersWithData: number;
   scoresWritten: number;
@@ -102,14 +102,14 @@ function daysBetween(earlier: string, later: Date): number {
   return Math.floor((later.getTime() - d.getTime()) / 86_400_000);
 }
 
-function recencyWeight(p: InsiderPrecisionFormulaParams, daysAgo: number): number {
+function recencyWeight(p: InsiderConvictionFormulaParams, daysAgo: number): number {
   if (daysAgo <= 30) return p.recency_weight_0_30_days;
   if (daysAgo <= 60) return p.recency_weight_31_60_days;
   if (daysAgo <= 90) return p.recency_weight_61_90_days;
   return 0;
 }
 
-function roleWeight(p: InsiderPrecisionFormulaParams, role: string): number {
+function roleWeight(p: InsiderConvictionFormulaParams, role: string): number {
   const key = ROLE_TO_PARAM_KEY[role.toUpperCase()];
   if (!key) return p.role_weight_officer;
   return (p as unknown as Record<string, number>)[key] ?? p.role_weight_officer;
@@ -128,8 +128,8 @@ function chunkArray<T>(items: T[], size: number): T[][] {
 }
 
 @Injectable()
-export class InsiderPrecisionScoreService {
-  private readonly logger = new Logger(InsiderPrecisionScoreService.name);
+export class InsiderConvictionScoreService {
+  private readonly logger = new Logger(InsiderConvictionScoreService.name);
   private adminClient: SupabaseClient | null = null;
 
   constructor(private config: ConfigService) {
@@ -286,7 +286,7 @@ export class InsiderPrecisionScoreService {
   private scoreForTarget(
     target: TargetRow,
     trades: InsiderTradeRow[],
-    p: InsiderPrecisionFormulaParams,
+    p: InsiderConvictionFormulaParams,
     asOf: Date,
     allowedSecCodes: Set<string>,
     allowedNormalizedTypes: Set<string>,
@@ -394,8 +394,8 @@ export class InsiderPrecisionScoreService {
     limit?: number;
     minScore?: number;
     maxScore?: number;
-  }): Promise<InsiderPrecisionCalculateResult> {
-    const empty: InsiderPrecisionCalculateResult = {
+  }): Promise<InsiderConvictionCalculateResult> {
+    const empty: InsiderConvictionCalculateResult = {
       tickersRequested: 0,
       tickersWithData: 0,
       scoresWritten: 0,
@@ -419,17 +419,17 @@ export class InsiderPrecisionScoreService {
     if (!formulaRow?.id) {
       empty.errors.push({
         ticker: '_',
-        message: 'Formula insider_precision_score not found; run migration 20260415120000_seed_insider_precision_score_ske36.sql',
+        message: 'Formula insider_conviction_score not found; run migration 20260415120000_seed_insider_conviction_score_ske36.sql',
       });
       return empty;
     }
 
     const defRaw = formulaRow.definition as Record<string, unknown> | null;
     const paramsRaw =
-      defRaw?.type === 'insider_precision' && defRaw?.params && typeof defRaw.params === 'object'
+      defRaw?.type === 'insider_conviction' && defRaw?.params && typeof defRaw.params === 'object'
         ? (defRaw.params as Record<string, unknown>)
         : {};
-    const p = mergeInsiderPrecisionParams(paramsRaw);
+    const p = mergeInsiderConvictionParams(paramsRaw);
 
     // Build allowed filter sets
     const allowedSecCodes = new Set(
@@ -462,7 +462,7 @@ export class InsiderPrecisionScoreService {
 
     // Score each security
     const asOf = new Date();
-    type ScoredRow = InsiderPrecisionCalculateResult['scores'][number] & { entityId: string };
+    type ScoredRow = InsiderConvictionCalculateResult['scores'][number] & { entityId: string };
     const allScored: ScoredRow[] = [];
 
     for (const target of targets) {
@@ -563,8 +563,8 @@ export class InsiderPrecisionScoreService {
     limit?: number;
     minScore?: number;
     maxScore?: number;
-  }): Promise<InsiderPrecisionCalculateResult> {
-    const empty: InsiderPrecisionCalculateResult = {
+  }): Promise<InsiderConvictionCalculateResult> {
+    const empty: InsiderConvictionCalculateResult = {
       tickersRequested: 0,
       tickersWithData: 0,
       scoresWritten: 0,
@@ -585,7 +585,7 @@ export class InsiderPrecisionScoreService {
     if (!formulaRow?.id) {
       empty.errors.push({
         ticker: '_',
-        message: 'Formula insider_precision_score not found',
+        message: 'Formula insider_conviction_score not found',
       });
       return empty;
     }

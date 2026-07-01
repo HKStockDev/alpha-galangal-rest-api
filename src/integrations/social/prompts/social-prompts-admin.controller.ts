@@ -16,7 +16,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { SupabaseAuthGuard } from '../../../auth/guards/supabase-auth.guard';
 import { PlatformAdminGuard } from '../../../auth/guards/platform-admin.guard';
-import { resolvePrecisionOrganizationId } from '../social-org.util';
+import { resolveConvictionOrganizationId } from '../social-org.util';
 import { SocialPromptComposerService } from '../social-prompt-composer.service';
 import { WoopSocialService } from '../woop/woop-social.service';
 import {
@@ -50,7 +50,7 @@ export class SocialPromptsAdminController {
   ) {}
 
   private orgId(): string {
-    return resolvePrecisionOrganizationId(this.config);
+    return resolveConvictionOrganizationId(this.config);
   }
 
   private userId(req: AuthedRequest): string | undefined {

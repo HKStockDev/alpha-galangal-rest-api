@@ -85,8 +85,8 @@ export class DataSyncOrchestratorService {
     return this.runFormulaScoreSync('politicalScore', options);
   }
 
-  runInsiderPrecisionScore(options?: { limit?: number | null }) {
-    return this.runFormulaScoreSync('insiderPrecisionScore', options);
+  runInsiderConvictionScore(options?: { limit?: number | null }) {
+    return this.runFormulaScoreSync('insiderConvictionScore', options);
   }
 
   runNetExposureScore(options?: { limit?: number | null }) {

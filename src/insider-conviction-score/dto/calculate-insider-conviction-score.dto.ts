@@ -1,7 +1,7 @@
 import { Type } from 'class-transformer';
 import { IsArray, IsInt, IsNumber, IsOptional, IsString, Max, Min } from 'class-validator';
 
-export class CalculateInsiderPrecisionScoreDto {
+export class CalculateInsiderConvictionScoreDto {
   @IsOptional()
   @IsArray()
   @IsString({ each: true })

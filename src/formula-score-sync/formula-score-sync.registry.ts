@@ -3,7 +3,7 @@ import type { DataSyncJobKey } from '../data-sync/data-sync.types';
 /** Formula score sync jobs (one per public marketing formula). */
 export const FORMULA_SCORE_SYNC_JOB_KEYS = [
   'politicalScore',
-  'insiderPrecisionScore',
+  'insiderConvictionScore',
   'netExposureScore',
   'hedgeFundQualityScore',
   'fundamentalConstrictionScore',
@@ -20,7 +20,7 @@ export function isFormulaScoreSyncJobKey(key: string): key is FormulaScoreSyncJo
 
 export const FORMULA_KEY_BY_SCORE_SYNC_JOB: Record<FormulaScoreSyncJobKey, string> = {
   politicalScore: 'political_score',
-  insiderPrecisionScore: 'insider_precision_score',
+  insiderConvictionScore: 'insider_conviction_score',
   netExposureScore: 'net_exposure_score',
   hedgeFundQualityScore: 'hedge_fund_quality_score',
   fundamentalConstrictionScore: 'fundamental_constriction_score',
@@ -36,7 +36,7 @@ export const SCORE_SYNC_JOB_BY_FORMULA_KEY: Record<string, FormulaScoreSyncJobKe
 
 export const FORMULA_SCORE_SYNC_JOB_LABELS: Record<FormulaScoreSyncJobKey, string> = {
   politicalScore: 'Political Score',
-  insiderPrecisionScore: 'Insider Precision Score',
+  insiderConvictionScore: 'Insider Conviction Score',
   netExposureScore: 'Net Exposure Score',
   hedgeFundQualityScore: 'Hedge Fund Quality Score',
   fundamentalConstrictionScore: 'Fundamental Constriction Score',
@@ -48,7 +48,7 @@ export const FORMULA_SCORE_SYNC_JOB_LABELS: Record<FormulaScoreSyncJobKey, strin
 export function formulaScoreSyncEnvHint(key: FormulaScoreSyncJobKey): string {
   const map: Record<FormulaScoreSyncJobKey, string> = {
     politicalScore: 'DATA_SYNC_CRON_FORMULA_POLITICAL_SCORE',
-    insiderPrecisionScore: 'DATA_SYNC_CRON_FORMULA_INSIDER_PRECISION_SCORE',
+    insiderConvictionScore: 'DATA_SYNC_CRON_FORMULA_INSIDER_CONVICTION_SCORE',
     netExposureScore: 'DATA_SYNC_CRON_FORMULA_NET_EXPOSURE_SCORE',
     hedgeFundQualityScore: 'DATA_SYNC_CRON_FORMULA_HEDGE_FUND_QUALITY_SCORE',
     fundamentalConstrictionScore: 'DATA_SYNC_CRON_FORMULA_FUNDAMENTAL_CONSTRICTION_SCORE',

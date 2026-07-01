@@ -1,5 +1,5 @@
 import type { SocialOauthPlatform } from '../constants';
-import { precisionPlatformToWoop } from './woop-platform.util';
+import { convictionPlatformToWoop } from './woop-platform.util';
 
 export type WoopPostSchedule =
   | { type: 'PUBLISH_NOW' }
@@ -78,6 +78,6 @@ export function buildWoopPostPayload(params: BuildWoopPostPayloadParams): Record
   };
 }
 
-export function precisionPlatformToWoopSafe(platform: string): string {
-  return precisionPlatformToWoop(platform as SocialOauthPlatform);
+export function convictionPlatformToWoopSafe(platform: string): string {
+  return convictionPlatformToWoop(platform as SocialOauthPlatform);
 }

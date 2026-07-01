@@ -82,7 +82,7 @@ const FORMULA_JOBS: SyncJobCatalogEntry[] = (
 function formulaManualRunPath(jobKey: FormulaScoreSyncJobKey): string {
   const map: Record<FormulaScoreSyncJobKey, string> = {
     politicalScore: 'political-score',
-    insiderPrecisionScore: 'insider-precision-score',
+    insiderConvictionScore: 'insider-conviction-score',
     netExposureScore: 'net-exposure-score',
     hedgeFundQualityScore: 'hedge-fund-quality-score',
     fundamentalConstrictionScore: 'fundamental-constriction-score',

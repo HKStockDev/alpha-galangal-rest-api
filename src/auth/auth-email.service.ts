@@ -24,7 +24,7 @@ export class AuthEmailService {
       this.config.get<string>('invitations.frontendUrl') ?? DEFAULT_FRONTEND_BASE_URL
     ).replace(/\/$/, '');
     this.fromEmail =
-      this.config.get<string>('invitations.fromEmail') ?? 'alex@withprecision.ai';
+      this.config.get<string>('invitations.fromEmail') ?? 'alex@withconviction.ai';
   }
 
   private settingsUrl(): string {
@@ -110,14 +110,14 @@ export class AuthEmailService {
 
   async sendReauthenticationCodeEmail(to: string, code: string): Promise<void> {
     const safeCode = escapeHtml(code);
-    const bodyHtml = `<p style="margin:0 0 12px 0;">Your Precision verification code is:</p>
+    const bodyHtml = `<p style="margin:0 0 12px 0;">Your Conviction verification code is:</p>
       <p style="margin:0;font-size:24px;font-weight:700;letter-spacing:0.2em;">${safeCode}</p>
       <p style="margin:16px 0 0 0;">This code expires shortly. If you did not request it, you can ignore this email.</p>`;
-    const text = `Your Precision verification code is: ${code}\n\nThis code expires shortly.`;
+    const text = `Your Conviction verification code is: ${code}\n\nThis code expires shortly.`;
 
     const result = await this.emailService.send({
       to,
-      subject: 'Your Precision verification code',
+      subject: 'Your Conviction verification code',
       html: renderTransactionalEmailLayout({
         preheader: 'Use this code to verify your identity.',
         title: 'Verification code',
@@ -145,7 +145,7 @@ export class AuthEmailService {
 
     const result = await this.emailService.send({
       to,
-      subject: `Precision — ${title}`,
+      subject: `Conviction — ${title}`,
       html: renderTransactionalEmailLayout({
         preheader: `Complete your ${action.replace(/_/g, ' ')} request.`,
         title,

@@ -327,31 +327,31 @@ const CONTENT = {
     },
   },
 
-  insider_precision_score: {
+  insider_conviction_score: {
     release1: {
-      title: 'Insider Precision Score — Form 4 Flow Signal',
+      title: 'Insider Conviction Score — Form 4 Flow Signal',
       subtitle: 'Open-market buys and sells, roles, recency, and clustering.',
-      seo_title: 'Insider Precision Score | Insider buying signal',
+      seo_title: 'Insider Conviction Score | Insider buying signal',
       seo_description:
-        'Insider Precision Score measures open-market insider activity with role weights, recency, and clustering.',
+        'Insider Conviction Score measures open-market insider activity with role weights, recency, and clustering.',
       body: body(
-        'The **Insider Precision Score** analyzes Form 4-style flows: open-market purchases and sales, officer vs director weighting, recency, and buy clustering.',
+        'The **Insider Conviction Score** analyzes Form 4-style flows: open-market purchases and sales, officer vs director weighting, recency, and buy clustering.',
         'Insider buying is not a guarantee—but persistent **net buying** by economic decision-makers often aligns with management’s private view of value.',
         'The score normalizes for market cap and filters noise from automatic sales and plan trades where possible.',
-        'Use as a precision overlay on value or growth theses—not as a timing tool for illiquid micro-caps.',
+        'Use as a conviction overlay on value or growth theses—not as a timing tool for illiquid micro-caps.',
       ),
     },
     release2: {
-      title: 'Insider Precision — Q1 2025 Flow Update',
+      title: 'Insider Conviction — Q1 2025 Flow Update',
       subtitle: 'Fresh Form 4 activity and revised clustering windows.',
-      seo_title: 'Insider Precision Q1 2025 update',
+      seo_title: 'Insider Conviction Q1 2025 update',
       seo_description:
-        'Q1 2025 Insider Precision refresh with updated Form 4 flows and clustering.',
+        'Q1 2025 Insider Conviction refresh with updated Form 4 flows and clustering.',
       body: body(
         '**Q1 2025** recalculates insider pressure after year-end filing season. Clustered buying increased in several industrials and financials relative to the October snapshot.',
         'We flag names where insider selling accelerated despite flat prices—potential **downside** information not yet in consensus estimates.',
         'Advisors should verify filing interpretation for complex corporate structures before client outreach.',
-        'See ranked results for top precision buys and notable sell pressure.',
+        'See ranked results for top conviction buys and notable sell pressure.',
       ),
     },
   },
@@ -359,12 +359,12 @@ const CONTENT = {
   hedge_fund_quality_score: {
     release1: {
       title: 'Hedge Fund Quality Score — Manager Composite',
-      subtitle: 'Performance, risk, precision, institutional strength, and positioning combined.',
+      subtitle: 'Performance, risk, conviction, institutional strength, and positioning combined.',
       seo_title: 'Hedge Fund Quality Score | 13F manager ranking',
       seo_description:
-        'Composite hedge fund quality score from performance, risk, precision, institutional strength, and positioning subscores.',
+        'Composite hedge fund quality score from performance, risk, conviction, institutional strength, and positioning subscores.',
       body: body(
-        'The **Hedge Fund Quality Score** combines five normalized pillars—performance, risk, precision, institutional strength, and positioning—into a single manager quality rank.',
+        'The **Hedge Fund Quality Score** combines five normalized pillars—performance, risk, conviction, institutional strength, and positioning—into a single manager quality rank.',
         'For allocator workflows, it surfaces managers with **durable track records** and positioning consistent with active equity skill—not passive beta dressed as alpha.',
         'Risk pillar inputs favor lower volatility and Sortino relative to peers; positioning penalizes excessive ETF/option/put reliance.',
         'Use to shortlist managers for due diligence, not as a substitute for operational due diligence.',
@@ -377,7 +377,7 @@ const CONTENT = {
       seo_description:
         'Q1 2025 hedge fund quality refresh with updated 13F holdings and performance metrics.',
       body: body(
-        '**Q1 2025** updates all subscores after new 13F filings. Precision and positioning saw the largest rank changes as managers rotated sector bets.',
+        '**Q1 2025** updates all subscores after new 13F filings. Conviction and positioning saw the largest rank changes as managers rotated sector bets.',
         'Managers rising in quality often show **stable risk-adjusted returns** without extreme factor tilts that reverse violently.',
         'When markets stress, quality-ranked managers historically show smaller drawdown dispersion—but past results vary.',
         'Review the manager table for current composite leaders.',
@@ -396,7 +396,7 @@ const CONTENT = {
         'The **Hedge Fund Risk** subscore rewards managers with strong **Sortino ratios**, **lower volatility**, and **beta near 1**—a capital-preservation-aware view of hedge fund return streams.',
         'Formula: `0.50×z(sortino) − 0.30×z(stddev) − 0.20×|z(β−1)|`. Higher is better.',
         'Allocators focused on **downside protection** use this pillar to filter managers who took outsized drawdowns for marginal alpha.',
-        'Pair with performance and precision scores—low risk alone can mean mediocre returns.',
+        'Pair with performance and conviction scores—low risk alone can mean mediocre returns.',
       ),
     },
     release2: {
@@ -443,31 +443,31 @@ const CONTENT = {
     },
   },
 
-  hedge_fund_precision: {
+  hedge_fund_conviction: {
     release1: {
-      title: 'Hedge Fund Precision — Concentration & Holding Period',
+      title: 'Hedge Fund Conviction — Concentration & Holding Period',
       subtitle: 'Top-10 concentration, time in top holdings, and turnover discipline.',
-      seo_title: 'Hedge Fund Precision score',
+      seo_title: 'Hedge Fund Conviction score',
       seo_description:
-        'Hedge fund precision from top-10 concentration, average holding period, and turnover.',
+        'Hedge fund conviction from top-10 concentration, average holding period, and turnover.',
       body: body(
-        'The **Hedge Fund Precision** subscore rewards thoughtful concentration: meaningful top-10 weights, longer average time in top holdings, and **lower turnover** than peers.',
-        'High precision can amplify returns—but also **drawdowns** if the thesis is wrong. Use with risk and quality composites.',
+        'The **Hedge Fund Conviction** subscore rewards thoughtful concentration: meaningful top-10 weights, longer average time in top holdings, and **lower turnover** than peers.',
+        'High conviction can amplify returns—but also **drawdowns** if the thesis is wrong. Use with risk and quality composites.',
         'Formula: `0.35×z(pct_top10) + 0.25×z(avg_time_top10) + 0.25×z(avg_held) − 0.15×z(turnover)`.',
         'Ideal for identifying managers with research depth vs portfolio churn.',
       ),
     },
     release2: {
-      title: 'Hedge Fund Precision — Q1 2025 Holdings Shift',
+      title: 'Hedge Fund Conviction — Q1 2025 Holdings Shift',
       subtitle: '13F concentration changes after latest filing period.',
-      seo_title: 'Hedge Fund Precision Q1 2025',
+      seo_title: 'Hedge Fund Conviction Q1 2025',
       seo_description:
-        'Q1 2025 precision update from latest 13F concentration and turnover metrics.',
+        'Q1 2025 conviction update from latest 13F concentration and turnover metrics.',
       body: body(
-        '**Q1 2025** reflects new 13F snapshots. Precision rose for managers who **added to winners** rather than rotating endlessly.',
+        '**Q1 2025** reflects new 13F snapshots. Conviction rose for managers who **added to winners** rather than rotating endlessly.',
         'Sharp turnover spikes without thesis documentation are penalized—potential sign of style drift.',
-        'Advisors explaining manager behavior to clients can cite precision trends quarter over quarter.',
-        'See the release table for precision leaders and churn outliers.',
+        'Advisors explaining manager behavior to clients can cite conviction trends quarter over quarter.',
+        'See the release table for conviction leaders and churn outliers.',
       ),
     },
   },
@@ -715,7 +715,7 @@ const CONTENT = {
         '**Structural Growth (10Y)** captures decade-scale adoption and TAM expansion—heavily weighted in the CAGR composite (`0.50×10y`).',
         'Appropriate for patient capital and thematic trusts; **not** for clients needing **low volatility** or near-term liquidity.',
         'Long-horizon estimates are inherently uncertain—use ranges and scenario language with clients.',
-        'Pair with Wood or Druckenmiller committee subscores for security-level precision.',
+        'Pair with Wood or Druckenmiller committee subscores for security-level conviction.',
       ),
     },
     release2: {

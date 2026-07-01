@@ -25,7 +25,7 @@ import { FormulaMarketingModule } from './formula-marketing/formula-marketing.mo
 import { TaxonomyMarketingModule } from './taxonomy-marketing/taxonomy-marketing.module';
 import { MarketingSearchModule } from './marketing-search/marketing-search.module';
 import { NetExposureScoreModule } from './net-exposure-score/net-exposure-score.module';
-import { InsiderPrecisionScoreModule } from './insider-precision-score/insider-precision-score.module';
+import { InsiderConvictionScoreModule } from './insider-conviction-score/insider-conviction-score.module';
 import { BuffettScoreModule } from './buffett-score/buffett-score.module';
 import { AmericaFirstScoreModule } from './america-first-score/america-first-score.module';
 import { DruckenmillerScoreModule } from './druckenmiller-score/druckenmiller-score.module';
@@ -81,7 +81,7 @@ import { TestLogModule } from './common/test-log.module';
     FundamentalConstrictionModule,
     PoliticalScoreModule,
     NetExposureScoreModule,
-    InsiderPrecisionScoreModule,
+    InsiderConvictionScoreModule,
     BuffettScoreModule,
     AmericaFirstScoreModule,
     DruckenmillerScoreModule,

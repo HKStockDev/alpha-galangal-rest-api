@@ -96,7 +96,7 @@ Reply: mailto:${p.email}`;
                   class="wordmark"
                   style="font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em;color:#0f172a;"
                 >
-                  Precision
+                  Conviction
                 </span>
                 <span
                   style="font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:13px;font-weight:500;color:#64748b;margin-left:10px;"
@@ -128,7 +128,7 @@ Reply: mailto:${p.email}`;
                         class="muted"
                         style="margin:0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#64748b;"
                       >
-                        Submitted via withprecision.ai
+                        Submitted via withconviction.ai
                       </p>
                     </td>
                   </tr>
@@ -200,7 +200,7 @@ Reply: mailto:${p.email}`;
                   class="footer-text"
                   style="margin:0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:11px;line-height:16px;color:#94a3b8;"
                 >
-                  Precision AI LLC · Internal notification only
+                  Conviction AI LLC · Internal notification only
                 </p>
               </td>
             </tr>

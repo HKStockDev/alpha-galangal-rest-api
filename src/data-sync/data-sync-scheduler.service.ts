@@ -368,7 +368,7 @@ export class DataSyncSchedulerService implements OnModuleInit {
       case 'equityExposures':
         return 'DATA_SYNC_CRON_EQUITY_EXPOSURES';
       case 'politicalScore':
-      case 'insiderPrecisionScore':
+      case 'insiderConvictionScore':
       case 'netExposureScore':
       case 'hedgeFundQualityScore':
       case 'fundamentalConstrictionScore':

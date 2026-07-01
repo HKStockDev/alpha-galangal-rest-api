@@ -54,7 +54,7 @@ export class BillingEmailService {
       this.config.get<string>('invitations.frontendUrl') ?? DEFAULT_FRONTEND_BASE_URL
     ).replace(/\/$/, '');
     this.fromEmail =
-      this.config.get<string>('invitations.fromEmail') ?? 'alex@withprecision.ai';
+      this.config.get<string>('invitations.fromEmail') ?? 'alex@withconviction.ai';
   }
 
   private getDb(): SupabaseClient | null {

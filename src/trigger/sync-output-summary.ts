@@ -39,7 +39,7 @@ export function formatSyncOutputSummary(
     case TRIGGER_SYNC_TASK_IDS.jobsFactorsSync:
       return `processed=${o.processed ?? o.entitiesProcessed ?? 0} upserted=${o.upserted ?? o.factorsUpserted ?? 0} errors=${errorCount(o.errors)}`;
     case TRIGGER_SYNC_TASK_IDS.politicalScore:
-    case TRIGGER_SYNC_TASK_IDS.insiderPrecisionScore:
+    case TRIGGER_SYNC_TASK_IDS.insiderConvictionScore:
     case TRIGGER_SYNC_TASK_IDS.netExposureScore:
     case TRIGGER_SYNC_TASK_IDS.hedgeFundQualityScore:
     case TRIGGER_SYNC_TASK_IDS.fundamentalConstrictionScore:

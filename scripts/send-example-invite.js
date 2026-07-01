@@ -13,7 +13,7 @@ const crypto = require('crypto');
 const EMAIL = 'anpolchert@gmail.com';
 const ROLE = 'org_member';
 const FRONTEND_URL = (process.env.FRONTEND_URL || process.env.INVITE_BASE_URL || 'http://app.localhost:3000').replace(/\/$/, '');
-const FROM_EMAIL = process.env.INVITE_FROM_EMAIL || 'alex@withprecision.ai';
+const FROM_EMAIL = process.env.INVITE_FROM_EMAIL || 'alex@withconviction.ai';
 
 async function main() {
   const supabase = createClient(

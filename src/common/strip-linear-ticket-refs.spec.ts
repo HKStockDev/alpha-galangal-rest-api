@@ -15,9 +15,9 @@ describe('stripLinearTicketRefs', () => {
   it('removes leading SKE ticket prefix', () => {
     assert.equal(
       stripLinearTicketRefs(
-        'SKE-36: Insider precision from Form 4-style flows — open-market buys/sells, roles, recency, clustering, cap normalization (Formulas.md).',
+        'SKE-36: Insider conviction from Form 4-style flows — open-market buys/sells, roles, recency, clustering, cap normalization (Formulas.md).',
       ),
-      'Insider precision from Form 4-style flows — open-market buys/sells, roles, recency, clustering, cap normalization (Formulas.md).',
+      'Insider conviction from Form 4-style flows — open-market buys/sells, roles, recency, clustering, cap normalization (Formulas.md).',
     );
   });
 
@@ -40,9 +40,9 @@ describe('stripLinearTicketRefs', () => {
   it('removes inline parenthetical references in body copy', () => {
     assert.equal(
       stripLinearTicketRefs(
-        'The **Insider Precision Score** (SKE-36) analyzes Form 4-style flows.',
+        'The **Insider Conviction Score** (SKE-36) analyzes Form 4-style flows.',
       ),
-      'The **Insider Precision Score** analyzes Form 4-style flows.',
+      'The **Insider Conviction Score** analyzes Form 4-style flows.',
     );
   });
 

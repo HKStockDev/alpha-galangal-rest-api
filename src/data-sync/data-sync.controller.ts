@@ -90,9 +90,9 @@ export class DataSyncController {
     return this.syncOrchestrator.runPoliticalScore({ limit: body?.limit });
   }
 
-  @Post('run/insider-precision-score')
-  runInsiderPrecisionScore(@Body() body?: { limit?: number | null }) {
-    return this.syncOrchestrator.runInsiderPrecisionScore({ limit: body?.limit });
+  @Post('run/insider-conviction-score')
+  runInsiderConvictionScore(@Body() body?: { limit?: number | null }) {
+    return this.syncOrchestrator.runInsiderConvictionScore({ limit: body?.limit });
   }
 
   @Post('run/net-exposure-score')

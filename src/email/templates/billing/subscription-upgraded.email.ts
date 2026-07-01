@@ -3,7 +3,7 @@ import { formatEmailDate } from '../shared/format-date';
 import { renderTransactionalEmailLayout } from '../shared/transactional-layout';
 import type { BillingEmailContext } from './types';
 
-const SUBJECT = 'Your Precision plan has been upgraded';
+const SUBJECT = 'Your Conviction plan has been upgraded';
 
 export function renderSubscriptionUpgradedEmail(ctx: BillingEmailContext): {
   subject: string;
@@ -32,7 +32,7 @@ Your updated plan is active through ${periodEnd}.
 
 Manage billing: ${ctx.dashboardUrl}
 
-— The Precision team`;
+— The Conviction team`;
 
   return {
     subject: SUBJECT,

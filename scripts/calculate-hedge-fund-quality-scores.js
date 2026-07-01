@@ -330,7 +330,7 @@ async function run() {
       [
         'hedge_fund_performance',
         'hedge_fund_risk',
-        'hedge_fund_precision',
+        'hedge_fund_conviction',
         'hedge_fund_institutional_strength',
         'hedge_fund_positioning',
         'hedge_fund_quality_score',
@@ -343,7 +343,7 @@ async function run() {
     const subFormulaKeys = [
       'hedge_fund_performance',
       'hedge_fund_risk',
-      'hedge_fund_precision',
+      'hedge_fund_conviction',
       'hedge_fund_institutional_strength',
       'hedge_fund_positioning',
     ];
@@ -378,7 +378,7 @@ async function run() {
             JSON.stringify({
               hedge_fund_performance: r.perf,
               hedge_fund_risk: r.risk,
-              hedge_fund_precision: r.conv,
+              hedge_fund_conviction: r.conv,
               hedge_fund_institutional_strength: r.inst,
               hedge_fund_positioning: r.pos,
             }),

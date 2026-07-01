@@ -5,7 +5,7 @@ import { BurryScoreService } from '../burry-score/burry-score.service';
 import { FormulaMarketingSnapshotService } from '../formula-marketing/formula-marketing-snapshot.service';
 import { FundamentalConstrictionScoreService } from '../fundamental-constriction/fundamental-constriction-score.service';
 import { HedgeFundQualityScoreService } from '../hedge-funds/hedge-fund-quality-score.service';
-import { InsiderPrecisionScoreService } from '../insider-precision-score/insider-precision-score.service';
+import { InsiderConvictionScoreService } from '../insider-conviction-score/insider-conviction-score.service';
 import { NetExposureScoreService } from '../net-exposure-score/net-exposure-score.service';
 import { PoliticalScoreService } from '../political-score/political-score.service';
 import {
@@ -46,7 +46,7 @@ export class FormulaScoreSyncService {
 
   constructor(
     private readonly politicalScore: PoliticalScoreService,
-    private readonly insiderPrecisionScore: InsiderPrecisionScoreService,
+    private readonly insiderConvictionScore: InsiderConvictionScoreService,
     private readonly netExposureScore: NetExposureScoreService,
     private readonly hedgeFundQualityScore: HedgeFundQualityScoreService,
     private readonly fundamentalConstrictionScore: FundamentalConstrictionScoreService,
@@ -75,8 +75,8 @@ export class FormulaScoreSyncService {
       case 'politicalScore':
         calcResult = await this.politicalScore.calculateScores({ limit });
         break;
-      case 'insiderPrecisionScore':
-        calcResult = await this.insiderPrecisionScore.calculateScores({ limit });
+      case 'insiderConvictionScore':
+        calcResult = await this.insiderConvictionScore.calculateScores({ limit });
         break;
       case 'netExposureScore':
         calcResult = await this.netExposureScore.calculateScores({ limit });

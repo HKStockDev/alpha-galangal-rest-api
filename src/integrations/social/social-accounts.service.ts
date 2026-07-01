@@ -11,7 +11,7 @@ import { decryptSecret, deriveKeyFromSecret, encryptSecret } from '../../lib/soc
 import type { OAuthTokenResponse } from './interfaces/social-oauth-provider.interface';
 import type { SocialAccountPlatform } from './constants';
 import { WoopSocialService } from './woop/woop-social.service';
-import { woopPlatformToPrecision } from './woop/woop-platform.util';
+import { woopPlatformToConviction } from './woop/woop-platform.util';
 
 @Injectable()
 export class SocialAccountsService {
@@ -192,7 +192,7 @@ export class SocialAccountsService {
           if (!found && shadow.external_account_id) {
             found = accounts.find(
               (a) =>
-                woopPlatformToPrecision(a.platform) === shadow.platform &&
+                woopPlatformToConviction(a.platform) === shadow.platform &&
                 a.external_account_id === shadow.external_account_id,
             );
           }

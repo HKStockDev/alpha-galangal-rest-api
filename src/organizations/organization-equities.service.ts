@@ -162,13 +162,13 @@ export interface OrgEquityDetails {
   scores: {
     fundamental_constriction_score: number | null;
     net_exposure_score: number | null;
-    insider_conviction_score: number | null;
+    insider_precision_score: number | null;
     political_score: number | null;
   };
   score_breakdowns: {
     fundamental_constriction_score: Record<string, unknown> | null;
     net_exposure_score: Record<string, unknown> | null;
-    insider_conviction_score: Record<string, unknown> | null;
+    insider_precision_score: Record<string, unknown> | null;
     political_score: Record<string, unknown> | null;
   };
   sentiment: {
@@ -765,13 +765,13 @@ export class OrganizationEquitiesService {
     const scores = {
       fundamental_constriction_score: null as number | null,
       net_exposure_score: null as number | null,
-      insider_conviction_score: null as number | null,
+      insider_precision_score: null as number | null,
       political_score: null as number | null,
     };
     const scoreBreakdowns = {
       fundamental_constriction_score: null as Record<string, unknown> | null,
       net_exposure_score: null as Record<string, unknown> | null,
-      insider_conviction_score: null as Record<string, unknown> | null,
+      insider_precision_score: null as Record<string, unknown> | null,
       political_score: null as Record<string, unknown> | null,
     };
     if (sec.entity_id) {
@@ -782,7 +782,7 @@ export class OrganizationEquitiesService {
           .in('key', [
             'fundamental_constriction_score',
             'net_exposure_score',
-            'insider_conviction_score',
+            'insider_precision_score',
             'political_score',
           ]),
         client
@@ -813,9 +813,9 @@ export class OrganizationEquitiesService {
         } else if (key === 'net_exposure_score') {
           scores.net_exposure_score = row.score;
           scoreBreakdowns.net_exposure_score = explanation;
-        } else if (key === 'insider_conviction_score') {
-          scores.insider_conviction_score = row.score;
-          scoreBreakdowns.insider_conviction_score = explanation;
+        } else if (key === 'insider_precision_score') {
+          scores.insider_precision_score = row.score;
+          scoreBreakdowns.insider_precision_score = explanation;
         } else if (key === 'political_score') {
           scores.political_score = row.score;
           scoreBreakdowns.political_score = explanation;

@@ -8,7 +8,7 @@ ALTER TABLE public.social_posts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.social_publish_attempts ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.social_post_assets ENABLE ROW LEVEL SECURITY;
 
--- Platform admins only (Conviction social MVP).
+-- Platform admins only (Precision social MVP).
 DROP POLICY IF EXISTS social_accounts_platform_admin ON public.social_accounts;
 CREATE POLICY social_accounts_platform_admin
   ON public.social_accounts

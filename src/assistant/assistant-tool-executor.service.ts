@@ -247,11 +247,11 @@ export class AssistantToolExecutorService {
     if (typeof args.max_net_exposure_score === 'number') {
       query.max_net_exposure_score = args.max_net_exposure_score;
     }
-    if (typeof args.min_insider_conviction_score === 'number') {
-      query.min_insider_conviction_score = args.min_insider_conviction_score;
+    if (typeof args.min_insider_precision_score === 'number') {
+      query.min_insider_precision_score = args.min_insider_precision_score;
     }
-    if (typeof args.max_insider_conviction_score === 'number') {
-      query.max_insider_conviction_score = args.max_insider_conviction_score;
+    if (typeof args.max_insider_precision_score === 'number') {
+      query.max_insider_precision_score = args.max_insider_precision_score;
     }
     if (typeof args.min_political_score === 'number') {
       query.min_political_score = args.min_political_score;

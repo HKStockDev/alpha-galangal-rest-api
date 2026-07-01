@@ -61,7 +61,7 @@ export function renderTransactionalEmailLayout(p: TransactionalEmailLayoutParams
           <table role="presentation" align="center" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
             <tr>
               <td align="left" style="padding:0 8px 20px 8px;">
-                <span class="wordmark" style="font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;font-weight:600;color:#0f172a;">Conviction</span>
+                <span class="wordmark" style="font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;font-weight:600;color:#0f172a;">Precision</span>
               </td>
             </tr>
             <tr>
@@ -82,7 +82,7 @@ export function renderTransactionalEmailLayout(p: TransactionalEmailLayoutParams
             <tr>
               <td align="center" style="padding:24px 8px 0 8px;">
                 <p class="muted" style="margin:0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#64748b;">
-                  Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA
+                  Precision AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA
                 </p>
               </td>
             </tr>

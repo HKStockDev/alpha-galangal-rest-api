@@ -124,7 +124,7 @@ export default () => {
   invitations: {
     frontendUrl: frontendBase,
     resendApiKey: process.env.RESEND_API_KEY,
-    fromEmail: process.env.INVITE_FROM_EMAIL ?? 'alex@withconviction.ai',
+    fromEmail: process.env.INVITE_FROM_EMAIL ?? 'alex@withprecision.ai',
   },
   /** Stripe Billing (Checkout, Customer Portal, webhooks). Server-only secrets. */
   stripe: {
@@ -146,7 +146,7 @@ export default () => {
   corsOrigin: process.env.CORS_ORIGIN ?? DEFAULT_CORS_ORIGINS,
   marketing: {
     contactForm: {
-      notifyEmail: process.env.CONTACT_FORM_NOTIFY_EMAIL?.trim() || 'alex@withconviction.ai',
+      notifyEmail: process.env.CONTACT_FORM_NOTIFY_EMAIL?.trim() || 'alex@withprecision.ai',
     },
   },
   /** In-process Nest cron (empty = job disabled). Standard 5-field cron. */
@@ -175,8 +175,8 @@ export default () => {
     })(),
   },
   social: {
-    /** Default org for Conviction-only social OAuth when the client omits organization_id. */
-    convictionOrganizationId: process.env.CONVICTION_ORGANIZATION_ID?.trim(),
+    /** Default org for Precision-only social OAuth when the client omits organization_id. */
+    precisionOrganizationId: process.env.PRECISION_ORGANIZATION_ID?.trim(),
     tokenEncryptionKey: process.env.SOCIAL_TOKEN_ENCRYPTION_KEY?.trim(),
     oauthStateSecret: process.env.SOCIAL_OAUTH_STATE_SECRET?.trim(),
     /**
@@ -226,7 +226,7 @@ export default () => {
     apiKey: trimEnv(process.env.WOOP_SOCIAL_API_KEY),
     baseUrl: trimEnv(process.env.WOOP_SOCIAL_BASE_URL) ?? 'https://api.woopsocial.com/v1',
     projectId: trimEnv(process.env.WOOP_SOCIAL_PROJECT_ID),
-    defaultProjectName: trimEnv(process.env.WOOP_SOCIAL_PROJECT_NAME) ?? 'Conviction',
+    defaultProjectName: trimEnv(process.env.WOOP_SOCIAL_PROJECT_NAME) ?? 'Precision',
     webhookSigningSecret: trimEnv(process.env.WOOP_WEBHOOK_SIGNING_SECRET),
   },
   };

@@ -33,17 +33,17 @@ export class SocialOauthAdminController {
   ) {}
 
   /**
-   * Conviction org UUID from CONVICTION_ORGANIZATION_ID when the client omits organization_id.
+   * Precision org UUID from PRECISION_ORGANIZATION_ID when the client omits organization_id.
    */
   private resolveOrganizationId(explicit?: string): string {
     const trimmed = explicit?.trim();
     if (trimmed) {
       return trimmed;
     }
-    const fromEnv = this.config.get<string>('social.convictionOrganizationId')?.trim();
+    const fromEnv = this.config.get<string>('social.precisionOrganizationId')?.trim();
     if (!fromEnv) {
       throw new BadRequestException(
-        'Set CONVICTION_ORGANIZATION_ID on the API server, or pass organization_id as a query parameter.',
+        'Set PRECISION_ORGANIZATION_ID on the API server, or pass organization_id as a query parameter.',
       );
     }
     return fromEnv;

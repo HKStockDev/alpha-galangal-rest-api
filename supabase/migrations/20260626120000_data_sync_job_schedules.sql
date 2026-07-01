@@ -54,7 +54,7 @@ INSERT INTO public.data_sync_job_schedules (
   ('taxonomyCycleScores', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 0, '03:15', NULL, NULL, false),
   ('equityExposures', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 0, '02:00', NULL, NULL, false),
   ('politicalScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '10:00', NULL, NULL, false),
-  ('insiderConvictionScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '10:30', NULL, NULL, false),
+  ('insiderPrecisionScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '10:30', NULL, NULL, false),
   ('netExposureScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '11:00', NULL, NULL, false),
   ('hedgeFundQualityScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '11:30', NULL, NULL, false),
   ('fundamentalConstrictionScore', true, 'weekly', 'America/New_York', NULL, NULL, false, NULL, 1, '12:00', NULL, NULL, false),

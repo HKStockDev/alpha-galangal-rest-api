@@ -22,7 +22,7 @@ export class EmailService {
       this.resend = new Resend(apiKey);
     }
     this.defaultFrom =
-      this.config.get<string>('invitations.fromEmail') ?? 'alex@withconviction.ai';
+      this.config.get<string>('invitations.fromEmail') ?? 'alex@withprecision.ai';
   }
 
   isConfigured(): boolean {

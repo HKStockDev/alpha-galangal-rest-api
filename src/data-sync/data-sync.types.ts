@@ -8,7 +8,7 @@ export type DataSyncJobKey =
   | 'equityExposures'
   | 'jobsFactorsSync'
   | 'politicalScore'
-  | 'insiderConvictionScore'
+  | 'insiderPrecisionScore'
   | 'netExposureScore'
   | 'hedgeFundQualityScore'
   | 'fundamentalConstrictionScore'
@@ -26,7 +26,7 @@ export const DATA_SYNC_JOB_KEYS: readonly DataSyncJobKey[] = [
   'equityExposures',
   'jobsFactorsSync',
   'politicalScore',
-  'insiderConvictionScore',
+  'insiderPrecisionScore',
   'netExposureScore',
   'hedgeFundQualityScore',
   'fundamentalConstrictionScore',

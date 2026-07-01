@@ -159,7 +159,7 @@ function formulaScoreTask(jobKey: FormulaScoreSyncJobKey) {
 }
 
 export const syncPoliticalScoreTask = formulaScoreTask('politicalScore');
-export const syncInsiderConvictionScoreTask = formulaScoreTask('insiderConvictionScore');
+export const syncInsiderPrecisionScoreTask = formulaScoreTask('insiderPrecisionScore');
 export const syncNetExposureScoreTask = formulaScoreTask('netExposureScore');
 export const syncHedgeFundQualityScoreTask = formulaScoreTask('hedgeFundQualityScore');
 export const syncFundamentalConstrictionScoreTask = formulaScoreTask('fundamentalConstrictionScore');
@@ -240,7 +240,7 @@ if (!useDbSchedules) {
 
   const formulaScoreTasks = {
     politicalScore: syncPoliticalScoreTask,
-    insiderConvictionScore: syncInsiderConvictionScoreTask,
+    insiderPrecisionScore: syncInsiderPrecisionScoreTask,
     netExposureScore: syncNetExposureScoreTask,
     hedgeFundQualityScore: syncHedgeFundQualityScoreTask,
     fundamentalConstrictionScore: syncFundamentalConstrictionScoreTask,
@@ -251,7 +251,7 @@ if (!useDbSchedules) {
 
   const formulaScheduleIds: Record<FormulaScoreSyncJobKey, string> = {
     politicalScore: 'scheduled-sync-formula-political-score',
-    insiderConvictionScore: 'scheduled-sync-formula-insider-conviction-score',
+    insiderPrecisionScore: 'scheduled-sync-formula-insider-precision-score',
     netExposureScore: 'scheduled-sync-formula-net-exposure-score',
     hedgeFundQualityScore: 'scheduled-sync-formula-hedge-fund-quality-score',
     fundamentalConstrictionScore: 'scheduled-sync-formula-fundamental-constriction-score',

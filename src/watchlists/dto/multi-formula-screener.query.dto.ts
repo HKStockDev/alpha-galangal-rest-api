@@ -5,7 +5,7 @@ export const MULTI_FORMULA_SORT_COLUMNS = [
   'ticker',
   'fundamental_constriction_score',
   'net_exposure_score',
-  'insider_conviction_score',
+  'insider_precision_score',
   'political_score',
   'america_first_score',
 ] as const;
@@ -61,11 +61,11 @@ export class MultiFormulaScreenerQueryDto {
 
   @IsOptional()
   @Transform(({ value }) => parseOptionalNumber(value))
-  min_insider_conviction_score?: number;
+  min_insider_precision_score?: number;
 
   @IsOptional()
   @Transform(({ value }) => parseOptionalNumber(value))
-  max_insider_conviction_score?: number;
+  max_insider_precision_score?: number;
 
   @IsOptional()
   @Transform(({ value }) => parseOptionalNumber(value))

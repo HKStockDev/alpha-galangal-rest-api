@@ -1,7 +1,7 @@
 import type { MarketingContactFormPayload } from './types';
 import { escapeHtml } from './escape-html';
 
-const SUBJECT = 'We got your message — Conviction';
+const SUBJECT = 'We got your message — Precision';
 
 export function renderSubmitterAcknowledgmentEmail(p: MarketingContactFormPayload): {
   subject: string;
@@ -17,10 +17,10 @@ export function renderSubmitterAcknowledgmentEmail(p: MarketingContactFormPayloa
 
   // Plain text: no HTML execution; use raw copy for natural line breaks (separate from HTML-escaped branch).
   const text = `Thanks for reaching out, ${p.name}.
-We just received your message at Conviction. A human on our team will review it
+We just received your message at Precision. A human on our team will review it
 and get back to you within one business day.
 In the meantime, if you'd like to skip ahead, you can book a personalized demo:
-https://www.withconviction.ai/demo
+https://www.withprecision.ai/demo
 ---
 What we received
 Firm: ${p.firm}
@@ -29,8 +29,8 @@ Email: ${p.email}
 Your message:
 ${p.message}
 ---
-— The Conviction team
-Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
+— The Precision team
+Precision AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
 
   const html = `<!doctype html>
 <html lang="en">
@@ -107,15 +107,15 @@ Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
               <td align="left" style="padding:0 8px 20px 8px;">
                 <!--
                   To use a hosted logo instead of the wordmark, replace this <span> with:
-                  <img src="https://www.withconviction.ai/logos/conviction-light-full.png"
-                       width="160" height="32" alt="Conviction"
+                  <img src="https://www.withprecision.ai/logos/precision-light-full.png"
+                       width="160" height="32" alt="Precision"
                        style="display:block;border:0;outline:none;text-decoration:none;height:32px;width:auto;" />
                 -->
                 <span
                   class="wordmark"
                   style="font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:18px;font-weight:600;letter-spacing:-0.01em;color:#0f172a;"
                 >
-                  Conviction
+                  Precision
                 </span>
               </td>
             </tr>
@@ -143,7 +143,7 @@ Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
                         class="body"
                         style="margin:0 0 12px 0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:26px;color:#1f2937;"
                       >
-                        We just received your message at Conviction. A human on our team will
+                        We just received your message at Precision. A human on our team will
                         review it and get back to you
                         <strong style="color:#0f172a;">within one business day</strong>.
                       </p>
@@ -169,7 +169,7 @@ Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
                             style="border-radius:10px;"
                           >
                             <a
-                              href="https://www.withconviction.ai/demo"
+                              href="https://www.withprecision.ai/demo"
                               target="_blank"
                               style="display:inline-block;padding:12px 22px;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:14px;font-weight:600;line-height:20px;color:#ffffff;background-color:#0f172a;border-radius:10px;text-decoration:none;letter-spacing:0.01em;"
                             >
@@ -269,7 +269,7 @@ Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
                         class="body"
                         style="margin:0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:15px;line-height:24px;color:#1f2937;"
                       >
-                        — The Conviction team
+                        — The Precision team
                       </p>
                     </td>
                   </tr>
@@ -283,34 +283,34 @@ Conviction AI LLC · 8401 Mayland Dr, Ste A · Richmond, VA 23294 · USA`;
                   class="footer-text muted"
                   style="margin:0 0 6px 0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#64748b;"
                 >
-                  Conviction AI LLC &middot; 8401 Mayland Dr, Ste A &middot; Richmond, VA 23294 &middot; USA
+                  Precision AI LLC &middot; 8401 Mayland Dr, Ste A &middot; Richmond, VA 23294 &middot; USA
                 </p>
                 <p
                   class="footer-text muted"
                   style="margin:0 0 14px 0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;color:#64748b;"
                 >
-                  You're receiving this email because you contacted us through withconviction.ai.
+                  You're receiving this email because you contacted us through withprecision.ai.
                 </p>
                 <p
                   style="margin:0;font-family:'Geist',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;font-size:12px;line-height:18px;"
                 >
                   <a
                     class="footer-link"
-                    href="https://www.withconviction.ai"
+                    href="https://www.withprecision.ai"
                     target="_blank"
                     style="color:#475569;text-decoration:none;"
                   >Website</a>
                   &nbsp;&middot;&nbsp;
                   <a
                     class="footer-link"
-                    href="https://www.withconviction.ai/privacy"
+                    href="https://www.withprecision.ai/privacy"
                     target="_blank"
                     style="color:#475569;text-decoration:none;"
                   >Privacy</a>
                   &nbsp;&middot;&nbsp;
                   <a
                     class="footer-link"
-                    href="https://www.withconviction.ai/terms"
+                    href="https://www.withprecision.ai/terms"
                     target="_blank"
                     style="color:#475569;text-decoration:none;"
                   >Terms</a>

@@ -9,19 +9,19 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { SupabaseAuthGuard } from '../auth/guards/supabase-auth.guard';
-import { CalculateInsiderConvictionScoreDto } from './dto/calculate-insider-conviction-score.dto';
-import { InsiderConvictionScoreService } from './insider-conviction-score.service';
+import { CalculateInsiderPrecisionScoreDto } from './dto/calculate-insider-precision-score.dto';
+import { InsiderPrecisionScoreService } from './insider-precision-score.service';
 
-@Controller('stocks/insider-conviction')
+@Controller('stocks/insider-precision')
 @UseGuards(SupabaseAuthGuard)
-export class InsiderConvictionScoreController {
-  private readonly logger = new Logger(InsiderConvictionScoreController.name);
+export class InsiderPrecisionScoreController {
+  private readonly logger = new Logger(InsiderPrecisionScoreController.name);
 
-  constructor(private readonly svc: InsiderConvictionScoreService) {}
+  constructor(private readonly svc: InsiderPrecisionScoreService) {}
 
   /** Return persisted scores without triggering a recalculation. */
   @Get('scores')
-  async getScores(@Query() query: CalculateInsiderConvictionScoreDto) {
+  async getScores(@Query() query: CalculateInsiderPrecisionScoreDto) {
     try {
       return await this.svc.loadCurrentScores({
         tickers: query.tickers,
@@ -32,13 +32,13 @@ export class InsiderConvictionScoreController {
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       this.logger.error(`getScores failed: ${msg}`);
-      throw new InternalServerErrorException(msg || 'Failed to load insider conviction scores');
+      throw new InternalServerErrorException(msg || 'Failed to load insider precision scores');
     }
   }
 
   /** Recalculate scores from insider trades and persist results. */
   @Post('calculate-scores')
-  async calculateScores(@Body() body: CalculateInsiderConvictionScoreDto) {
+  async calculateScores(@Body() body: CalculateInsiderPrecisionScoreDto) {
     try {
       return await this.svc.calculateScores({
         tickers: body?.tickers,
@@ -49,7 +49,7 @@ export class InsiderConvictionScoreController {
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       this.logger.error(`calculateScores failed: ${msg}`, err instanceof Error ? err.stack : undefined);
-      throw new InternalServerErrorException(msg || 'Insider conviction score calculation failed');
+      throw new InternalServerErrorException(msg || 'Insider precision score calculation failed');
     }
   }
 }

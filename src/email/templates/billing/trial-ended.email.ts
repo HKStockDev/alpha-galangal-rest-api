@@ -3,7 +3,7 @@ import { formatEmailDate } from '../shared/format-date';
 import { renderTransactionalEmailLayout } from '../shared/transactional-layout';
 import type { BillingEmailContext } from './types';
 
-const SUBJECT = 'Your Conviction free trial has ended';
+const SUBJECT = 'Your Precision free trial has ended';
 
 export function renderTrialEndedEmail(ctx: BillingEmailContext): {
   subject: string;
@@ -29,7 +29,7 @@ Your current billing period runs through ${periodEnd}.
 
 Manage billing: ${ctx.dashboardUrl}
 
-— The Conviction team`;
+— The Precision team`;
 
   return {
     subject: SUBJECT,

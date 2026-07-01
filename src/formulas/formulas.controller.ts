@@ -28,8 +28,8 @@ import {
   FundamentalConstrictionFormulaWeights,
   PoliticalScoreFormulaWeights,
   StructuralGrowthCagrFormulaWeights,
-  mergeInsiderConvictionParams,
-  assertValidInsiderConvictionParams,
+  mergeInsiderPrecisionParams,
+  assertValidInsiderPrecisionParams,
 } from './formulas.service';
 import { MarketContentClassifierPreviewService } from '../market-content/market-content-classifier-preview.service';
 import { ContentCategoriesService } from '../market-content/content-categories.service';
@@ -47,7 +47,7 @@ const COMMITTEE_MEMBER_WEIGHT_KEYS = [
 const REQUIRED_WEIGHT_KEYS = [
   'hedge_fund_performance',
   'hedge_fund_risk',
-  'hedge_fund_conviction',
+  'hedge_fund_precision',
   'hedge_fund_institutional_strength',
   'hedge_fund_positioning',
 ] as const;
@@ -202,23 +202,23 @@ export class FormulasController {
     return { formula, recalc };
   }
 
-  @Get('insider-conviction-score')
-  async getInsiderConvictionScoreFormula() {
-    const result = await this.formulasService.getInsiderConvictionScoreFormula();
+  @Get('insider-precision-score')
+  async getInsiderPrecisionScoreFormula() {
+    const result = await this.formulasService.getInsiderPrecisionScoreFormula();
     if (!result.formula) {
       return { formula: null, components: {} };
     }
     return { formula: result.formula, components: result.components };
   }
 
-  @Patch('insider-conviction-score')
-  async updateInsiderConvictionScore(@Body() body: { params?: Record<string, unknown> }) {
+  @Patch('insider-precision-score')
+  async updateInsiderPrecisionScore(@Body() body: { params?: Record<string, unknown> }) {
     if (!body?.params || typeof body.params !== 'object' || Array.isArray(body.params)) {
       throw new BadRequestException('params object is required');
     }
-    const merged = mergeInsiderConvictionParams(body.params);
-    assertValidInsiderConvictionParams(merged);
-    const formula = await this.formulasService.updateInsiderConvictionScoreParams(merged);
+    const merged = mergeInsiderPrecisionParams(body.params);
+    assertValidInsiderPrecisionParams(merged);
+    const formula = await this.formulasService.updateInsiderPrecisionScoreParams(merged);
     return { formula };
   }
 

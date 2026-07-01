@@ -5,12 +5,12 @@ import { WoopSocialClient } from './woop-social.client';
 import {
   buildWoopPostPayload,
   type WoopPostSchedule,
-  convictionPlatformToWoopSafe,
+  precisionPlatformToWoopSafe,
 } from './woop-post-payload.util';
 import {
-  convictionPlatformToWoop,
-  woopPlatformToConviction,
-  woopStatusToConviction,
+  precisionPlatformToWoop,
+  woopPlatformToPrecision,
+  woopStatusToPrecision,
   type WoopSocialPlatform,
 } from './woop-platform.util';
 import { unwrapWoopList } from './woop-response.util';
@@ -57,10 +57,10 @@ export class WoopSocialService {
   }
 
   private organizationId(): string {
-    const id = this.config.get<string>('social.convictionOrganizationId')?.trim();
+    const id = this.config.get<string>('social.precisionOrganizationId')?.trim();
     if (!id) {
       throw new BadRequestException(
-        'Set CONVICTION_ORGANIZATION_ID on the API server for Woop Social integration.',
+        'Set PRECISION_ORGANIZATION_ID on the API server for Woop Social integration.',
       );
     }
     return id;
@@ -83,7 +83,7 @@ export class WoopSocialService {
     }
 
     const name =
-      this.config.get<string>('woopSocial.defaultProjectName')?.trim() ?? 'Conviction';
+      this.config.get<string>('woopSocial.defaultProjectName')?.trim() ?? 'Precision';
     const created = await this.client.post<WoopProject>('/projects', { name });
     this.cachedProjectId = created.id;
     return created.id;
@@ -94,11 +94,11 @@ export class WoopSocialService {
     return {
       id: account.id,
       organization_id: this.organizationId(),
-      platform: woopPlatformToConviction(account.platform),
+      platform: woopPlatformToPrecision(account.platform),
       account_label: account.username || null,
       external_account_name: account.username || null,
       external_account_id: account.externalAccountId || null,
-      status: woopStatusToConviction(account.status),
+      status: woopStatusToPrecision(account.status),
       metadata: {
         woop: true,
         image_url: account.imageUrl,
@@ -126,7 +126,7 @@ export class WoopSocialService {
     redirectUrl: string;
   }): Promise<{ url: string; redirect_uri: string }> {
     const projectId = await this.resolveProjectId();
-    const woopPlatform = convictionPlatformToWoop(params.platform);
+    const woopPlatform = precisionPlatformToWoop(params.platform);
     const response = await this.client.post<{ url: string }>(
       '/social-accounts/authorization-url',
       {
@@ -144,7 +144,7 @@ export class WoopSocialService {
 
   parseWoopPlatformFromCallback(raw: string | null | undefined): SocialOauthPlatform | null {
     if (!raw?.trim()) return null;
-    const normalized = woopPlatformToConviction(raw);
+    const normalized = woopPlatformToPrecision(raw);
     const allowed: SocialOauthPlatform[] = [
       'facebook',
       'instagram',
@@ -177,7 +177,7 @@ export class WoopSocialService {
     if (!account) {
       throw new BadRequestException('Woop social account not found.');
     }
-    const woopPlatform = convictionPlatformToWoopSafe(account.platform);
+    const woopPlatform = precisionPlatformToWoopSafe(account.platform);
     return buildWoopPostPayload({
       socialAccountId: params.socialAccountId,
       woopPlatform,

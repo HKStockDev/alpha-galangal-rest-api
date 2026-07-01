@@ -11,7 +11,7 @@ import { SocialAccountsService } from './social-accounts.service';
 import { SocialPromptComposerService } from './social-prompt-composer.service';
 import { SocialPublishService } from './social-publish.service';
 import { WoopSocialService } from './woop/woop-social.service';
-import { woopPlatformToConviction } from './woop/woop-platform.util';
+import { woopPlatformToPrecision } from './woop/woop-platform.util';
 import { defaultPostKindForPlatform, isMvpPublishPlatform } from './social-org.util';
 
 const DAILY_POST_LIMIT = 3;
@@ -346,7 +346,7 @@ export class SocialPostsService {
         last_error_message: p.lastErrorMessage ?? p.last_error_message ?? null,
         created_at: p.createdAt ?? p.created_at ?? new Date().toISOString(),
         social_accounts: {
-          platform: woopPlatformToConviction(String(p.platform ?? '')),
+          platform: woopPlatformToPrecision(String(p.platform ?? '')),
           account_label: p.username ?? null,
         },
         source: 'woop',
@@ -381,7 +381,7 @@ export class SocialPostsService {
       signal_name: params.shareTitle,
       summary: params.shareSummary?.trim() || params.shareTitle,
       ticker: params.ticker?.trim() || '',
-      organization_name: params.organizationName?.trim() || 'Conviction',
+      organization_name: params.organizationName?.trim() || 'Precision',
     };
   }
 

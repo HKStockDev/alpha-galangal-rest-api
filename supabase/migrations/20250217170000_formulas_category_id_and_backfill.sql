@@ -27,7 +27,7 @@ where sc.name = 'BUSINESS_QUALITY'
   and f.key in (
     'hedge_fund_performance',
     'hedge_fund_risk',
-    'hedge_fund_conviction',
+    'hedge_fund_precision',
     'hedge_fund_institutional_strength',
     'hedge_fund_positioning',
     'hedge_fund_quality_score'
@@ -40,7 +40,7 @@ where parent.key = 'hedge_fund_quality_score'
   and child.key in (
     'hedge_fund_performance',
     'hedge_fund_risk',
-    'hedge_fund_conviction',
+    'hedge_fund_precision',
     'hedge_fund_institutional_strength',
     'hedge_fund_positioning'
   );

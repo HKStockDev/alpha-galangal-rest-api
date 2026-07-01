@@ -10,15 +10,15 @@ UPDATE public.ai_tools SET
       "max_fundamental_constriction_score": { "type": "number" },
       "min_net_exposure_score": { "type": "number" },
       "max_net_exposure_score": { "type": "number" },
-      "min_insider_conviction_score": { "type": "number" },
-      "max_insider_conviction_score": { "type": "number" },
+      "min_insider_precision_score": { "type": "number" },
+      "max_insider_precision_score": { "type": "number" },
       "min_political_score": { "type": "number" },
       "max_political_score": { "type": "number" },
       "min_america_first_score": { "type": "number" },
       "max_america_first_score": { "type": "number" },
       "sort_by": {
         "type": "string",
-        "enum": ["ticker", "fundamental_constriction_score", "net_exposure_score", "insider_conviction_score", "political_score", "america_first_score"]
+        "enum": ["ticker", "fundamental_constriction_score", "net_exposure_score", "insider_precision_score", "political_score", "america_first_score"]
       },
       "sort_dir": { "type": "string", "enum": ["asc", "desc"] }
     }
@@ -38,8 +38,8 @@ UPDATE public.ai_tools SET
       "max_fundamental_constriction_score": { "type": "number" },
       "min_net_exposure_score": { "type": "number" },
       "max_net_exposure_score": { "type": "number" },
-      "min_insider_conviction_score": { "type": "number" },
-      "max_insider_conviction_score": { "type": "number" },
+      "min_insider_precision_score": { "type": "number" },
+      "max_insider_precision_score": { "type": "number" },
       "min_political_score": { "type": "number" },
       "max_political_score": { "type": "number" },
       "min_america_first_score": { "type": "number" },

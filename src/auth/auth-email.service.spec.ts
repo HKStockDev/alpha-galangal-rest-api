@@ -12,7 +12,7 @@ describe('auth email templates', () => {
       expiresMinutes: 30,
     });
 
-    assert.equal(subject, 'Reset your Conviction password');
+    assert.equal(subject, 'Reset your Precision password');
     assert.match(html, /Reset your password/);
     assert.match(html, /&lt;script&gt;/);
     assert.match(text, /reset\?token=/);
@@ -26,7 +26,7 @@ describe('auth email templates', () => {
       settingsUrl: 'https://app.example.com/org/dashboard/settings',
     });
 
-    assert.equal(subject, 'Your Conviction password was changed');
+    assert.equal(subject, 'Your Precision password was changed');
     assert.match(html, /Password changed/);
     assert.match(html, /org\/dashboard\/settings/);
     assert.match(text, /password was changed/i);
@@ -36,7 +36,7 @@ describe('auth email templates', () => {
     const confirmUrl = 'https://abc.supabase.co/auth/v1/verify?token=<bad>';
     const { subject, html, text } = renderSignupVerificationEmail({ confirmUrl });
 
-    assert.equal(subject, 'Verify your Conviction account');
+    assert.equal(subject, 'Verify your Precision account');
     assert.match(html, /Verify your email/);
     assert.match(html, /&lt;bad&gt;/);
     assert.match(text, /Confirm your email address/);

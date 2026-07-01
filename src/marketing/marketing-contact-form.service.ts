@@ -65,7 +65,7 @@ export class MarketingContactFormService {
         `Contact form: team notify failed after submitter ok to=${notifyTo} err=${toTeam.error}`,
       );
       throw new ServiceUnavailableException(
-        'Your message was received, but we could not alert our team automatically. Please email hello@conviction.com.',
+        'Your message was received, but we could not alert our team automatically. Please email hello@precision.com.',
       );
     }
 

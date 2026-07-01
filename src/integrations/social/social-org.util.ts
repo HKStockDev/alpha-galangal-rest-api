@@ -1,7 +1,7 @@
 import { BadRequestException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 
-export function resolveConvictionOrganizationId(
+export function resolvePrecisionOrganizationId(
   config: ConfigService,
   explicit?: string,
 ): string {
@@ -9,10 +9,10 @@ export function resolveConvictionOrganizationId(
   if (trimmed) {
     return trimmed;
   }
-  const fromEnv = config.get<string>('social.convictionOrganizationId')?.trim();
+  const fromEnv = config.get<string>('social.precisionOrganizationId')?.trim();
   if (!fromEnv) {
     throw new BadRequestException(
-      'Set CONVICTION_ORGANIZATION_ID on the API server, or pass organization_id as a query/body parameter.',
+      'Set PRECISION_ORGANIZATION_ID on the API server, or pass organization_id as a query/body parameter.',
     );
   }
   return fromEnv;

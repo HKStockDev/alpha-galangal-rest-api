@@ -24,7 +24,7 @@ BEGIN
     updated_at = now()
   FROM (VALUES
     ('political_score', 'political-score'),
-    ('insider_conviction_score', 'insider-conviction-score'),
+    ('insider_precision_score', 'insider-precision-score'),
     ('net_exposure_score', 'net-exposure-score'),
     ('hedge_fund_quality_score', 'hedge-fund-quality-score'),
     ('fundamental_constriction_score', 'fundamental-constriction-score'),

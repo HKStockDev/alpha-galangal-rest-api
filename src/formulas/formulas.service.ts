@@ -13,7 +13,7 @@ import { expandFormulaKeyAliases } from '../lib/formula-key-aliases';
 export interface FormulaWeights {
   hedge_fund_performance: number;
   hedge_fund_risk: number;
-  hedge_fund_conviction: number;
+  hedge_fund_precision: number;
   hedge_fund_institutional_strength: number;
   hedge_fund_positioning: number;
 }
@@ -81,7 +81,7 @@ const POLITICAL_SCORE_KEY = 'political_score';
 
 const STRUCTURAL_GROWTH_CAGR_SCORE_KEY = 'taxonomy_structural_growth_cagr_score';
 
-const INSIDER_CONVICTION_SCORE_KEY = 'insider_conviction_score';
+const INSIDER_PRECISION_SCORE_KEY = 'insider_precision_score';
 
 export const FC_COMPOSITE_WEIGHT_KEYS = [
   'fc_earnings_acceleration_pct',
@@ -118,15 +118,15 @@ export type StructuralGrowthCagrFormulaWeights = {
 };
 
 /** Denominator for pressure_ratio (company-size normalization). */
-export const INSIDER_CONVICTION_CAP_NORM_METHODS = [
+export const INSIDER_PRECISION_CAP_NORM_METHODS = [
   'market_cap',
   'enterprise_value',
   'revenue_ttm',
 ] as const;
-export type InsiderConvictionCapNormMethod = (typeof INSIDER_CONVICTION_CAP_NORM_METHODS)[number];
+export type InsiderPrecisionCapNormMethod = (typeof INSIDER_PRECISION_CAP_NORM_METHODS)[number];
 
-/** SKE-36 / Formulas.md — `formulas.definition.params` when `definition.type` is `insider_conviction`. */
-export interface InsiderConvictionFormulaParams {
+/** SKE-36 / Formulas.md — `formulas.definition.params` when `definition.type` is `insider_precision`. */
+export interface InsiderPrecisionFormulaParams {
   role_weight_ceo: number;
   role_weight_cfo: number;
   role_weight_chairman: number;
@@ -147,10 +147,10 @@ export interface InsiderConvictionFormulaParams {
   score_scaling_factor: number;
   minimum_trade_value_threshold_usd: number;
   included_transaction_types: string[];
-  market_cap_normalization_method: InsiderConvictionCapNormMethod;
+  market_cap_normalization_method: InsiderPrecisionCapNormMethod;
 }
 
-export const DEFAULT_INSIDER_CONVICTION_FORMULA_PARAMS: InsiderConvictionFormulaParams = {
+export const DEFAULT_INSIDER_PRECISION_FORMULA_PARAMS: InsiderPrecisionFormulaParams = {
   role_weight_ceo: 1.0,
   role_weight_cfo: 0.9,
   role_weight_chairman: 0.9,
@@ -189,7 +189,7 @@ function buildSgCagrDisplayFormula(weights: StructuralGrowthCagrFormulaWeights):
   return `${w.sg_cagr_score_3y.toFixed(2)}×score_3y + ${w.sg_cagr_score_5y.toFixed(2)}×score_5y + ${w.sg_cagr_score_10y.toFixed(2)}×score_10y`;
 }
 
-function buildInsiderConvictionDisplayFormula(p: InsiderConvictionFormulaParams): string {
+function buildInsiderPrecisionDisplayFormula(p: InsiderPrecisionFormulaParams): string {
   const types = p.included_transaction_types.slice().sort().join(',');
   return `100×tanh(ratio×${p.score_scaling_factor}); ${p.signal_lookback_days}d; min $${p.minimum_trade_value_threshold_usd}; norm=${p.market_cap_normalization_method}; types=${types}`;
 }
@@ -203,14 +203,14 @@ function coerceFiniteNumber(v: unknown): number | null {
   return null;
 }
 
-export function mergeInsiderConvictionParams(
+export function mergeInsiderPrecisionParams(
   raw: Record<string, unknown> | null | undefined,
-): InsiderConvictionFormulaParams {
-  const out: InsiderConvictionFormulaParams = { ...DEFAULT_INSIDER_CONVICTION_FORMULA_PARAMS };
+): InsiderPrecisionFormulaParams {
+  const out: InsiderPrecisionFormulaParams = { ...DEFAULT_INSIDER_PRECISION_FORMULA_PARAMS };
   if (!raw) return out;
 
   const numericKeys: (keyof Omit<
-    InsiderConvictionFormulaParams,
+    InsiderPrecisionFormulaParams,
     'included_transaction_types' | 'market_cap_normalization_method'
   >)[] = [
     'role_weight_ceo',
@@ -255,15 +255,15 @@ export function mergeInsiderConvictionParams(
   const method = raw.market_cap_normalization_method;
   if (
     typeof method === 'string' &&
-    (INSIDER_CONVICTION_CAP_NORM_METHODS as readonly string[]).includes(method)
+    (INSIDER_PRECISION_CAP_NORM_METHODS as readonly string[]).includes(method)
   ) {
-    out.market_cap_normalization_method = method as InsiderConvictionCapNormMethod;
+    out.market_cap_normalization_method = method as InsiderPrecisionCapNormMethod;
   }
 
   return out;
 }
 
-export function assertValidInsiderConvictionParams(p: InsiderConvictionFormulaParams): void {
+export function assertValidInsiderPrecisionParams(p: InsiderPrecisionFormulaParams): void {
   const range05 = (label: string, v: number) => {
     if (!Number.isFinite(v) || v < 0 || v > 5) {
       throw new BadRequestException(`${label} must be a finite number between 0 and 5`);
@@ -312,7 +312,7 @@ export function assertValidInsiderConvictionParams(p: InsiderConvictionFormulaPa
       );
     }
   }
-  if (!(INSIDER_CONVICTION_CAP_NORM_METHODS as readonly string[]).includes(p.market_cap_normalization_method)) {
+  if (!(INSIDER_PRECISION_CAP_NORM_METHODS as readonly string[]).includes(p.market_cap_normalization_method)) {
     throw new BadRequestException('Invalid market cap normalization method');
   }
 }
@@ -320,7 +320,7 @@ export function assertValidInsiderConvictionParams(p: InsiderConvictionFormulaPa
 const COMPONENT_KEYS = [
   'hedge_fund_performance',
   'hedge_fund_risk',
-  'hedge_fund_conviction',
+  'hedge_fund_precision',
   'hedge_fund_institutional_strength',
   'hedge_fund_positioning',
 ] as const;
@@ -1119,7 +1119,7 @@ export class FormulasService {
     return updated as Formula;
   }
 
-  async getInsiderConvictionScoreFormula(): Promise<{
+  async getInsiderPrecisionScoreFormula(): Promise<{
     formula: Formula | null;
     components: Record<string, FormulaComponent>;
   }> {
@@ -1127,42 +1127,42 @@ export class FormulasService {
     const { data: formula, error: formulaError } = await this.adminClient
       .from('formulas')
       .select('id, key, name, output_type, definition, display_formula, description, updated_at')
-      .eq('key', INSIDER_CONVICTION_SCORE_KEY)
+      .eq('key', INSIDER_PRECISION_SCORE_KEY)
       .single();
 
     if (formulaError || !formula) return { formula: null, components: {} };
 
     const def = formula.definition as Record<string, unknown> | null;
     const paramsRaw =
-      def?.type === 'insider_conviction' && def?.params && typeof def.params === 'object'
+      def?.type === 'insider_precision' && def?.params && typeof def.params === 'object'
         ? (def.params as Record<string, unknown>)
         : {};
-    const params = mergeInsiderConvictionParams(paramsRaw);
+    const params = mergeInsiderPrecisionParams(paramsRaw);
     const mergedFormula = {
       ...formula,
-      definition: { type: 'insider_conviction' as const, params },
+      definition: { type: 'insider_precision' as const, params },
     };
     return { formula: mergedFormula as unknown as Formula, components: {} };
   }
 
-  async updateInsiderConvictionScoreParams(params: InsiderConvictionFormulaParams): Promise<Formula> {
+  async updateInsiderPrecisionScoreParams(params: InsiderPrecisionFormulaParams): Promise<Formula> {
     if (!this.adminClient) {
       throw new Error('Supabase client not configured');
     }
-    assertValidInsiderConvictionParams(params);
+    assertValidInsiderPrecisionParams(params);
 
     const { data: existing, error: fetchError } = await this.adminClient
       .from('formulas')
       .select('id')
-      .eq('key', INSIDER_CONVICTION_SCORE_KEY)
+      .eq('key', INSIDER_PRECISION_SCORE_KEY)
       .single();
 
     if (fetchError || !existing) {
-      throw new NotFoundException('Insider Conviction Score formula not found');
+      throw new NotFoundException('Insider Precision Score formula not found');
     }
 
-    const newDefinition = { type: 'insider_conviction' as const, params };
-    const display_formula = buildInsiderConvictionDisplayFormula(params);
+    const newDefinition = { type: 'insider_precision' as const, params };
+    const display_formula = buildInsiderPrecisionDisplayFormula(params);
 
     const { data: updated, error: updateError } = await this.adminClient
       .from('formulas')

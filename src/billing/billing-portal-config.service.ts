@@ -6,12 +6,12 @@ import { TEAM_PLAN_MAX_SEATS } from './dto/create-checkout-session.dto';
 import { STRIPE_PLAN_PLACEHOLDER_MARKER } from './billing.constants';
 import { SubscriptionPlanRow } from './billing.types';
 
-const PORTAL_CONFIG_METADATA_KEY = 'conviction_portal_sync';
+const PORTAL_CONFIG_METADATA_KEY = 'precision_portal_sync';
 const PORTAL_CONFIG_METADATA_VALUE = 'v1';
-const PORTAL_CONFIG_NAME = 'Conviction Billing Portal';
+const PORTAL_CONFIG_NAME = 'Precision Billing Portal';
 
 const INVOICE_HISTORY_CONFIG_METADATA_VALUE = 'v1_invoice_history';
-const INVOICE_HISTORY_CONFIG_NAME = 'Conviction Billing Portal — Invoice History';
+const INVOICE_HISTORY_CONFIG_NAME = 'Precision Billing Portal — Invoice History';
 
 export interface PortalPlanProductCorrection {
   plan_key: string;

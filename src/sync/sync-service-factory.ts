@@ -13,7 +13,7 @@ import { TaxonomyStructuralGrowthService } from '../formulas/taxonomy-structural
 import { FundamentalConstrictionScoreService } from '../fundamental-constriction/fundamental-constriction-score.service';
 import { FmpService } from '../fmp/fmp.service';
 import { HedgeFundQualityScoreService } from '../hedge-funds/hedge-fund-quality-score.service';
-import { InsiderConvictionScoreService } from '../insider-conviction-score/insider-conviction-score.service';
+import { InsiderPrecisionScoreService } from '../insider-precision-score/insider-precision-score.service';
 import { SecurityEnrichmentService } from '../massive/security-enrichment.service';
 import { NetExposureScoreService } from '../net-exposure-score/net-exposure-score.service';
 import { PoliticalScoreService } from '../political-score/political-score.service';
@@ -70,8 +70,8 @@ export function createPoliticalScoreService(): PoliticalScoreService {
   return new PoliticalScoreService(config, createFmpService(), createCongressService());
 }
 
-export function createInsiderConvictionScoreService(): InsiderConvictionScoreService {
-  return new InsiderConvictionScoreService(getConfig());
+export function createInsiderPrecisionScoreService(): InsiderPrecisionScoreService {
+  return new InsiderPrecisionScoreService(getConfig());
 }
 
 export function createNetExposureScoreService(): NetExposureScoreService {
@@ -109,7 +109,7 @@ export function createJobsService(): JobsService {
 export function createFormulaScoreSyncService(): FormulaScoreSyncService {
   return new FormulaScoreSyncService(
     createPoliticalScoreService(),
-    createInsiderConvictionScoreService(),
+    createInsiderPrecisionScoreService(),
     createNetExposureScoreService(),
     createHedgeFundQualityScoreService(),
     createFundamentalConstrictionScoreService(),

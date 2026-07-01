@@ -17,7 +17,7 @@ import {
   SocialPostPreviewDto,
 } from './dto/social-posts.dto';
 import { SocialPostsService } from './social-posts.service';
-import { resolveConvictionOrganizationId } from './social-org.util';
+import { resolvePrecisionOrganizationId } from './social-org.util';
 
 type AuthedRequest = { user?: { sub?: string; id?: string } };
 
@@ -33,7 +33,7 @@ export class SocialPostsAdminController {
   ) {}
 
   private orgId(explicit?: string): string {
-    return resolveConvictionOrganizationId(this.config, explicit);
+    return resolvePrecisionOrganizationId(this.config, explicit);
   }
 
   private userId(req: AuthedRequest): string | undefined {
